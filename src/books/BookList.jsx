@@ -6,15 +6,14 @@ export default function BookList({ books, onFav }) {
     <div className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {books.map((book) => (
         <div key={book.id} className="space-y-3">
-          {/* <!-- thumbnail --> */}
           <div className="flex items-center justify-center rounded-md border border-[#324251]/30 bg-white p-4">
             <img
-              className="max-w-[144px] h-[200px]"
+              className="max-w-[144px]"
               src={book.photoUrl}
               alt="book name"
             />
           </div>
-          {/* <!-- info --> */}
+
           <div className="space-y-3">
             <h4 className="text-lg font-bold lg:text-xl">
               {book.name} ({book.publishYear})
@@ -24,7 +23,7 @@ export default function BookList({ books, onFav }) {
             </p>
             <div className="flex items-center justify-between">
               <h4 className="text-lg font-bold lg:text-xl">${book.price}</h4>
-              {/* <!-- stars --> */}
+
               <div className="flex items-center space-x-1">
                 {Array.from({ length: book.rating }, (_, index) => (
                   <FaStar color="orange" key={index} />
@@ -32,7 +31,6 @@ export default function BookList({ books, onFav }) {
 
                 <span className="text-xs lg:text-sm">({book.rating} Star)</span>
               </div>
-              {/* <!-- stars ends --> */}
             </div>
 
             <div className="flex items-center gap-3 text-xs lg:text-sm">

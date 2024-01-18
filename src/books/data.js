@@ -61,16 +61,7 @@ export const defaultBooks = [
     publishYear: 2005,
     isFavourite: true,
   },
-  {
-    id: crypto.randomUUID(),
-    photoUrl: "https://i.ibb.co/QXXxcfJ/image.jpg",
-    name: "Habluder Jonno Programming",
-    author: "Jhankar Mahbub",
-    price: 250,
-    rating: 4,
-    publishYear: 2019,
-    isFavourite: false,
-  },
+
   {
     id: crypto.randomUUID(),
     photoUrl: "https://i.ibb.co/1QcdgXN/22f81d4bf-90991.jpg",
@@ -90,6 +81,16 @@ export const defaultBooks = [
     price: 340,
     rating: 5,
     publishYear: 2007,
+    isFavourite: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    photoUrl: "https://i.ibb.co/QXXxcfJ/image.jpg",
+    name: "Habluder Jonno Programming",
+    author: "Jhankar Mahbub",
+    price: 250,
+    rating: 4,
+    publishYear: 2019,
     isFavourite: false,
   },
 ];

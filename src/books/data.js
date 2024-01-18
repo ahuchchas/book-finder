@@ -71,4 +71,25 @@ export const defaultBooks = [
     publishYear: 2019,
     isFavourite: false,
   },
+  {
+    id: crypto.randomUUID(),
+    photoUrl: "https://i.ibb.co/1QcdgXN/22f81d4bf-90991.jpg",
+    name: "Thing and Grow Rich",
+    author: "Nepoleon Hill",
+    price: 280,
+    rating: 4,
+    publishYear: 2013,
+    isFavourite: true,
+  },
+  {
+    id: crypto.randomUUID(),
+    photoUrl:
+      "https://i.ibb.co/Cn47RhX/A-Tale-of-Two-Cities-Charles-Dickens-72b65-86448.jpg",
+    name: "A Tale of Two Cities",
+    author: "Charles Dickens",
+    price: 340,
+    rating: 5,
+    publishYear: 2007,
+    isFavourite: false,
+  },
 ];

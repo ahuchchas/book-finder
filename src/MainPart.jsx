@@ -1,39 +1,7 @@
 import { useState } from "react";
 import BookList from "./books/BookList";
+import { defaultBooks } from "./books/data";
 import Header from "./header/Header";
-
-const defaultBooks = [
-  {
-    id: crypto.randomUUID(),
-    photoUrl: "https://i.ibb.co/QXXxcfJ/image.jpg",
-    name: "Habluder Jonno Programming",
-    author: "Jhankar Mahbub",
-    price: 250,
-    rating: 4,
-    publishYear: 2019,
-    isFavourite: true,
-  },
-  {
-    id: crypto.randomUUID(),
-    photoUrl: "https://i.ibb.co/p2d9mS3/a36832000f6be243a78f1704827bffe9.jpg",
-    name: "Computer Programming",
-    author: "Tamim Shahriar Subin",
-    price: 220,
-    rating: 5,
-    publishYear: 2015,
-    isFavourite: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    photoUrl: "https://i.ibb.co/0jnGD1J/e53af8191-202772.png",
-    name: "Haate Kolome Javascript",
-    author: "Junayed Ahmed",
-    price: 230,
-    rating: 4,
-    publishYear: 2021,
-    isFavourite: false,
-  },
-];
 
 export default function MainPart() {
   const [books, setBooks] = useState(defaultBooks);
@@ -53,16 +21,31 @@ export default function MainPart() {
   }
 
   function handleSearch(searchTerm) {
-    // alert(searchTerm);
     const filterdBooks = books.filter((book) =>
       book.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setBooks(filterdBooks);
   }
 
+  function handleSort(sortTerm) {
+    const sortedBooks = [...books].sort((a, b) => {
+      if (sortTerm === "name_asc") {
+        return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
+      } else if (sortTerm === "name_desc") {
+        return a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1;
+      } else if (sortTerm === "year_asc") {
+        return a.publishYear - b.publishYear;
+      } else if (sortTerm === "year_desc") {
+        return b.publishYear - a.publishYear;
+      }
+    });
+
+    setBooks(sortedBooks);
+  }
+
   return (
     <main className="my-10 lg:my-14">
-      <Header onSearch={handleSearch} />
+      <Header onSearch={handleSearch} onSort={handleSort} />
       <BookList books={books} onFav={handleFav} />
     </main>
   );

@@ -5,6 +5,7 @@ import Header from "./header/Header";
 
 export default function MainPart() {
   const [books, setBooks] = useState(defaultBooks);
+  const [searchedBooks, setSearchedBooks] = useState(null);
 
   function handleFav(bookId) {
     const updatedBooks = books.map((book) => {
@@ -24,7 +25,7 @@ export default function MainPart() {
     const filterdBooks = books.filter((book) =>
       book.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setBooks(filterdBooks);
+    setSearchedBooks(filterdBooks);
   }
 
   function handleSort(sortTerm) {
@@ -46,7 +47,10 @@ export default function MainPart() {
   return (
     <main className="my-10 lg:my-14">
       <Header onSearch={handleSearch} onSort={handleSort} />
-      <BookList books={books} onFav={handleFav} />
+      <BookList
+        books={searchedBooks ? searchedBooks : books}
+        onFav={handleFav}
+      />
     </main>
   );
 }

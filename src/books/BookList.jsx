@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 import { FaStar } from "react-icons/fa";
 
-export default function BookList({ books, onFav }) {
+export default function BookList({ books, onFav, searchTerm }) {
+  const filterdBooks = books.filter((book) =>
+    book.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto grid grid-cols-1 gap-8 max-w-7xl md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {books.length < 1 && (
+      {books.length < 1 && <h1 className="font-bold ">Book List is Empty!</h1>}
+      {filterdBooks.length < 1 && (
         <h1 className="font-bold ">No books matched your search.</h1>
       )}
-      {books.map((book) => (
+      {filterdBooks.map((book) => (
         <div key={book.id} className="space-y-3">
           <div className="flex items-center justify-center rounded-md border border-[#324251]/30 bg-white p-4">
             <img
